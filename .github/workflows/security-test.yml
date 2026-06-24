@@ -31,4 +31,4 @@ jobs:
           # Point to OpenRouter API
           ANTHROPIC_BASE_URL: https://openrouter.ai/api/v1
           # Use a working model
-          ANTHROPIC_DEFAULT_SONNET_MODEL: openrouter/anthropic/claude-3-7-sonnet
+          ANTHROPIC_DEFAULT_SONNET_MODEL: anthropic/claude-3-7-sonnet
