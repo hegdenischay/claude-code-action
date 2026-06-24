@@ -1,0 +1,30 @@
+name: Security Test - Attack PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  claude-interaction:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Claude Code Action
+        uses: ./
+        with:
+          # Use your OpenRouter API key here
+          anthropic_api_key: ${{ secrets.OPENROUTER_API_KEY }}
+          allowed_tools: "LS,Read,Bash"
+          # Restrict to prevent actual damage
+          disallowed_tools: "Computer,Bash(commit:*,push:*)"
+        env:
+          # Point to OpenRouter API
+          ANTHROPIC_BASE_URL: https://openrouter.ai/api/v1
