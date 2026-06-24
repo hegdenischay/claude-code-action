@@ -21,7 +21,7 @@ jobs:
         with:
           # Use your OpenRouter API key here
           anthropic_api_key: ${{ secrets.OPENROUTER_API_KEY }}
-          claude_args: "--model openrouter/free"
+          claude_args: "--model poolside/laguna-m.1:free"
           # Use built-in GITHUB_TOKEN instead of Claude App
           github_token: ${{ github.token }}
           # Force tag mode on PR events
