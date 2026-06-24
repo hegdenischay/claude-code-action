@@ -25,6 +25,8 @@ jobs:
           github_token: ${{ github.token }}
           # Force tag mode on PR events
           track_progress: "true"
+          # Use OpenRouter model format
+          claude_args: "--model openrouter/free"
         env:
           # Point to OpenRouter API
           ANTHROPIC_BASE_URL: https://openrouter.ai/api/v1
