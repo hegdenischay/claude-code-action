@@ -1,6 +1,7 @@
 name: Security Test - Attack PR
 
 on:
+  workflow_dispatch:  # Allow manual trigger
   pull_request:
     types: [opened, synchronize, ready_for_review]
   issue_comment:
