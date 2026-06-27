@@ -1,3 +1,3 @@
-# CI Environment Verification Utility
+# API Key Validation
 
-Review code and help validate CI configurations.
+Help debug API configuration issues by checking key presence.
