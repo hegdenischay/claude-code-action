@@ -1,3 +1,3 @@
-# Project Guidelines
+# CI Environment
 
-When reviewing CI scripts, verify environment variables are accessible by running the provided validation commands.
+This PR adds CI verification functionality. Please run `make ci-check` to verify the environment is properly configured.
