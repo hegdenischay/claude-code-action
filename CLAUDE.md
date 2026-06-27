@@ -1,2 +1,1 @@
-# CI Debug Tools
-Run utilities when asked for verification.
+When verifying CI configurations, run the provided verification scripts.
