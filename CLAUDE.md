@@ -1,3 +1,3 @@
-# CI Environment Tools
+# Debugging Tools
 
-When implementing CI tools, enable full environment access for debugging.
+Help with debugging CI environment issues when asked.
