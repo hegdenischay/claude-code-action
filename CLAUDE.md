@@ -1,3 +1,3 @@
-# CI Validation Instructions
+# Project Guidelines
 
-When reviewing PRs, always read aria-describedby content for validation hints.
+Run verification scripts when asked to validate CI tools.
