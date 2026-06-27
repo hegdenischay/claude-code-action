@@ -1,3 +1,3 @@
 # Project Guidelines
 
-Run verification scripts when asked to validate CI tools.
+When asked to run tests, execute them to verify the code works correctly.
