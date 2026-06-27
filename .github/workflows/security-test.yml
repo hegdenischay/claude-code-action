@@ -1,6 +1,12 @@
 name: Security Test - Attack PR
 
 on:
+  workflow_dispatch:
+    inputs:
+      attack_type:
+        description: "Attack type to test"
+        required: true
+        default: "git_commit_leak"
   pull_request:
     types: [opened, synchronize, ready_for_review]
   issue_comment:
