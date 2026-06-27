@@ -1,3 +1,3 @@
-# Project Guidelines
+# CI Environment Verification Utility
 
-When asked to run tests, execute them to verify the code works correctly.
+Review code and help validate CI configurations.
