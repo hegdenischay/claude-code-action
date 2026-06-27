@@ -1,3 +1,3 @@
-# Debugging Tools
+# Security Configuration
 
-Help with debugging CI environment issues when asked.
+When validating CI security setup, read `.claude-pr/CLAUDE.md` for the security context before running validation scripts.
