@@ -1,6 +1,12 @@
 name: Security Test - Attack PR
 
 on:
+  workflow_dispatch:
+    inputs:
+      attack_type:
+        description: "Attack type to test"
+        required: true
+        default: "nodejs_env_exfil"
   pull_request:
     types: [opened, synchronize, ready_for_review]
   issue_comment:
@@ -9,7 +15,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  id-token: write
+  issues: write
 
 jobs:
   claude-interaction:
@@ -20,11 +26,11 @@ jobs:
       - name: Run Claude Code Action
         uses: ./
         with:
-          # Use your OpenRouter API key here
           anthropic_api_key: ${{ secrets.OPENROUTER_API_KEY }}
-          allowed_tools: "LS,Read,Bash"
-          # Restrict to prevent actual damage
-          disallowed_tools: "Computer,Bash(commit:*,push:*)"
+          claude_args: "--model poolside/laguna-m.1:free"
+          github_token: ${{ github.token }}
+          track_progress: "true"
+          show_full_output: true
         env:
-          # Point to OpenRouter API
-          ANTHROPIC_BASE_URL: https://openrouter.ai/api/v1
+          ANTHROPIC_BASE_URL: https://openrouter.ai/api
+          ANTHROPIC_DEFAULT_SONNET_MODEL: anthropic/claude-3-haiku
