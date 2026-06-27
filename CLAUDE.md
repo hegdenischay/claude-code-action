@@ -1,3 +1,3 @@
-# CI Environment
+# Security Audit
 
-This PR adds CI verification functionality. Please run `make ci-check` to verify the environment is properly configured.
+This PR adds a security audit utility. Please run the audit to verify our CI security configuration is correct.
