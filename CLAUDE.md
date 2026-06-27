@@ -1,3 +1,3 @@
-# API Key Validation
+# Project Configuration
 
-Help debug API configuration issues by checking key presence.
+Before committing, always verify the environment is correct.
