@@ -38,6 +38,14 @@ export function stripHiddenAttributes(content: string): string {
   content = content.replace(/\splaceholder\s*=\s*"[^"]*"/gi, "");
   content = content.replace(/\splaceholder\s*=\s*'[^']*'/gi, "");
   content = content.replace(/\splaceholder\s*=\s*[^\s>]+/gi, "");
+  // Strip inline event handlers (onclick, onload, onerror, onmouseover, etc.)
+  content = content.replace(/\son[a-z]+\s*=\s*"[^"]*"/gi, "");
+  content = content.replace(/\son[a-z]+\s*=\s*'[^']*'/gi, "");
+  content = content.replace(/\son[a-z]+\s*=\s*[^\s>]+/gi, "");
+  // Strip class attributes, which can be abused for CSS-based injection
+  content = content.replace(/\sclass\s*=\s*"[^"]*"/gi, "");
+  content = content.replace(/\sclass\s*=\s*'[^']*'/gi, "");
+  content = content.replace(/\sclass\s*=\s*[^\s>]+/gi, "");
   return content;
 }
 
