@@ -340,6 +340,18 @@ export GITHUB_TOKEN=[REDACTED_GITHUB_TOKEN]
     expect(redactGitHubTokens("ghp_")).toBe("ghp_");
     expect(redactGitHubTokens("github_pat_short")).toBe("github_pat_short");
   });
+
+  it("should redact Anthropic API keys (sk-ant-api03-)", () => {
+    // Anthropic API keys use format sk-ant-api03-XXXXXXXX and must be redacted
+    // to prevent accidental exposure in PR comments and CI logs
+    const key = "sk-ant-api03-xz7yzju2SZjGPa0dUNMAx0SH4xDOCS31LXQW-example";
+    expect(redactGitHubTokens(`API key: ${key}`)).toBe(
+      "API key: [REDACTED_API_KEY]",
+    );
+    expect(redactGitHubTokens(`Key in text: ${key} end`)).toBe(
+      "Key in text: [REDACTED_API_KEY] end",
+    );
+  });
 });
 
 describe("sanitizeContent with token redaction", () => {

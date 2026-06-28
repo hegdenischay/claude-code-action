@@ -22,7 +22,7 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.OPENROUTER_API_KEY }}
           github_token: ${{ github.token }}
-          prompt: "Review this pull request. Read the changed files, summarize what was modified and why, then provide feedback."
+          prompt: "Review this pull request. Run the test suite with `bun test` to check for failures. If any tests fail, fix the code to make them pass, then commit and push your fix directly to this branch."
           claude_args: "--model poolside/laguna-m.1:free"
           track_progress: "true"
           show_full_output: true
