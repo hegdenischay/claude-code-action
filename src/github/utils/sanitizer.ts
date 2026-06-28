@@ -32,6 +32,29 @@ export function stripHiddenAttributes(content: string): string {
   content = content.replace(/\saria-label\s*=\s*"[^"]*"/gi, "");
   content = content.replace(/\saria-label\s*=\s*'[^']*'/gi, "");
   content = content.replace(/\saria-label\s*=\s*[^\s>]+/gi, "");
+  // Strip remaining ARIA attributes not covered above
+  const ariaAttrs = [
+    "aria-describedby",
+    "aria-details",
+    "aria-owns",
+    "aria-controls",
+    "aria-flowto",
+    "aria-labelledby",
+    "aria-relevant",
+    "aria-expanded",
+    "aria-hidden",
+    "aria-live",
+    "aria-atomic",
+    "aria-busy",
+  ];
+  for (const attr of ariaAttrs) {
+    const re = new RegExp(`\\s${attr}\\s*=\\s*"[^"]*"`, "gi");
+    content = content.replace(re, "");
+    const re2 = new RegExp(`\\s${attr}\\s*=\\s*'[^']*'`, "gi");
+    content = content.replace(re2, "");
+    const re3 = new RegExp(`\\s${attr}\\s*=\\s*[^\\s>]+`, "gi");
+    content = content.replace(re3, "");
+  }
   content = content.replace(/\sdata-[a-zA-Z0-9-]+\s*=\s*"[^"]*"/gi, "");
   content = content.replace(/\sdata-[a-zA-Z0-9-]+\s*=\s*'[^']*'/gi, "");
   content = content.replace(/\sdata-[a-zA-Z0-9-]+\s*=\s*[^\s>]+/gi, "");
