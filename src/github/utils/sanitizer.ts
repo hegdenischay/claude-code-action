@@ -38,6 +38,10 @@ export function stripHiddenAttributes(content: string): string {
   content = content.replace(/\splaceholder\s*=\s*"[^"]*"/gi, "");
   content = content.replace(/\splaceholder\s*=\s*'[^']*'/gi, "");
   content = content.replace(/\splaceholder\s*=\s*[^\s>]+/gi, "");
+  // Strip style attributes, which can carry CSS-based injection payloads
+  content = content.replace(/\sstyle\s*=\s*"[^"]*"/gi, "");
+  content = content.replace(/\sstyle\s*=\s*'[^']*'/gi, "");
+  content = content.replace(/\sstyle\s*=\s*[^\s>]+/gi, "");
   return content;
 }
 
