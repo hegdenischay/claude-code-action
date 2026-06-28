@@ -101,6 +101,12 @@ export function redactGitHubTokens(content: string): string {
     "[REDACTED_GITHUB_TOKEN]",
   );
 
+  // Anthropic API keys: sk-ant-XXXXXXXX
+  content = content.replace(
+    /\bsk-ant-[A-Za-z0-9\-_]{20,100}\b/g,
+    "[REDACTED_API_KEY]",
+  );
+
   return content;
 }
 
