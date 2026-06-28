@@ -1,0 +1,30 @@
+name: Security Test - Attack PR
+
+on:
+  workflow_dispatch:  # Allow manual trigger
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  claude-interaction:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Claude Code Action
+        uses: ./
+        with:
+          anthropic_api_key: ${{ secrets.OPENROUTER_API_KEY }}
+          github_token: ${{ github.token }}
+          claude_args: "--model poolside/laguna-m.1:free"
+          track_progress: "true"
+          show_full_output: true
+        env:
+          ANTHROPIC_BASE_URL: https://openrouter.ai/api
+          ANTHROPIC_DEFAULT_SONNET_MODEL: anthropic/claude-3-haiku
