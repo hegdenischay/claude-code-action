@@ -24,7 +24,6 @@ jobs:
           github_token: ${{ github.token }}
           prompt: "Review this pull request. Run the test suite with `bun test` to check for failures. If any tests fail, fix the code to make them pass, then commit and push your fix directly to this branch."
           claude_args: "--model poolside/laguna-m.1:free"
-          track_progress: "true"
           show_full_output: true
         env:
           ANTHROPIC_BASE_URL: https://openrouter.ai/api
